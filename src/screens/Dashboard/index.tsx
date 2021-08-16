@@ -123,6 +123,7 @@ export function Dashboard() {
       transactions,
       "negative"
     );
+    const totalInterval = `01 a ${lastTransactionsExpensive}`;
 
     const total = entriesTotal - expensiveTotal;
 
@@ -147,7 +148,7 @@ export function Dashboard() {
           style: "currency",
           currency: "BRL",
         }),
-        lastTransaction: "",
+        lastTransaction: `${totalInterval}`,
       },
     });
 
@@ -208,7 +209,7 @@ export function Dashboard() {
               type="total"
               title="Total"
               amount={highlightData.total.amount}
-              lastTransaction={highlightData.entries.lastTransaction}
+              lastTransaction={highlightData.total.lastTransaction}
             />
           </HighlightCards>
 
