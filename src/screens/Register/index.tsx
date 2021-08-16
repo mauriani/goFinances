@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { Keyboard, Modal, TouchableWithoutFeedback, Alert } from "react-native";
-import { useForm } from "react-hook-form";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import uuid from "react-native-uuid";
+
+import { useForm } from "react-hook-form";
+import { useNavigation } from "@react-navigation/native";
 
 import { Button } from "../../components/Form/Button";
 import { InputForm } from "../../components/Form/InputForm";
@@ -42,9 +46,11 @@ export function Register() {
     name: "categoria",
   });
 
+  const navigation = useNavigation();
   const {
     control,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     // força que nossa validação siga um padrão
@@ -63,19 +69,44 @@ export function Register() {
     setCategoryModalOpen(false);
   }
 
-  function handleRegister(form: FormData) {
+  async function handleRegister(form: FormData) {
+    const dataKey = "@gofinances:transactions";
+
     if (!transactionType) return Alert.alert("Selecione o tipo da transação");
 
     if (category.key === "category")
       return Alert.alert("Selecione a categoria");
 
-    const data = {
+    const newTransaction = {
+      id: String(uuid.v4()),
       name: form.name,
       amount: form.amount,
       transactionType,
-      cateory: category.key,
+      category: category.key,
+      date: new Date(),
     };
-    console.log(data);
+    try {
+      const data = await AsyncStorage.getItem(dataKey);
+      // caso tenha algo no meu array
+      const currentData = data ? JSON.parse(data) : [];
+
+      const dataFormatted = [...currentData, newTransaction];
+
+      await AsyncStorage.setItem(dataKey, JSON.stringify(dataFormatted));
+
+      reset(); // limpa o nosso formulário
+      setTransactionType("");
+      setCategory({
+        key: "category",
+        name: "categoria",
+      });
+
+      navigation.navigate("Listagem");
+    } catch (error) {
+      console.log(error);
+
+      Alert.alert("Não foi possível salvar.");
+    }
   }
 
   return (

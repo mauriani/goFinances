@@ -7,7 +7,7 @@ const icons = {
   down: "arrow-down-circle",
 };
 
-interface Props extends RectButtonProps {
+interface IProps extends RectButtonProps {
   type: "up" | "down";
   title: string;
   isActive: boolean;
@@ -18,7 +18,7 @@ export function TransactionTypeButton({
   title,
   isActive,
   ...rest
-}: Props) {
+}: IProps) {
   return (
     <Container type={type} isActive={isActive}>
       <Button {...rest}>

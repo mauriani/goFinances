@@ -6,13 +6,13 @@ import { Input } from "../Input";
 
 import { Container, Error } from "./styles";
 
-interface Props extends TextInputProps {
+interface IProps extends TextInputProps {
   control: Control;
   name: string;
   error: string;
 }
 
-export function InputForm({ control, name, error, ...rest }: Props) {
+export function InputForm({ control, name, error, ...rest }: IProps) {
   return (
     <Container>
       <Controller

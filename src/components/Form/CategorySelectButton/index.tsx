@@ -1,12 +1,12 @@
 import React from "react";
 import { Container, Category, Icon } from "./styles";
 
-interface Props {
+interface IProps {
   title: string;
   onPress: () => void;
 }
 
-export function CategorySelectButton({ title, onPress }: Props) {
+export function CategorySelectButton({ title, onPress }: IProps) {
   return (
     <Container onPress={onPress}>
       <Category>{title}</Category>

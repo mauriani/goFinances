@@ -16,7 +16,7 @@ interface ContainerProps {
 export const Container = styled.View<ContainerProps>`
   width: 48%;
 
-  border-width: ${({ isActive }) => (isActive ? 0 : 1.5)};
+  border-width: ${({ isActive }) => (isActive ? 0 : 1.5)}px;
   border-color: ${({ theme }) => theme.colors.text};
   border-style: solid;
 
