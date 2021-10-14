@@ -1,5 +1,11 @@
-import React, { createContext, ReactNode, useContext } from "react";
+import React, { createContext, ReactNode, useContext, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
+const { CLIENT_ID } = process.env;
+const { REDIRECT_URI } = process.env;
+
 import * as AuthSession from "expo-auth-session";
+import * as AppleAuthentication from "expo-apple-authentication";
 
 // react node - typagem para elemento filho
 
@@ -16,27 +22,15 @@ interface User {
 
 interface IAuthContextData {
   user: User;
+  signInWithApple(): Promise<void>;
   signInWithGoogle(): Promise<void>;
 }
 
-async function signInWithGoogle() {
-  try {
-    const CLIENT_ID =
-      "1002460393313-nchc299cf0sqi00sukcbiqmo0co6i758.apps.googleusercontent.com";
-    const REDIRECT_URI = "https://auth.expo.io/@maurianimaciel/gofinances";
-    const RESPONSE_TYPE = "token";
-    const SCOPE = encodeURI("profile email"); // para que o espaço seja formatado na uri
-
-    const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`;
-
-    console.log(authUrl);
-
-    const response = await AuthSession.startAsync({ authUrl });
-
-    console.log("response", response);
-  } catch (err) {
-    throw new Error(err as string);
-  }
+interface AuthorizationResponse {
+  params: {
+    access_token: string;
+  };
+  type: string;
 }
 
 // criando o contento
@@ -45,13 +39,73 @@ export const AuthContext = createContext({} as IAuthContextData);
 // o hook
 
 function AuthProvider({ children }: AuthProviderProps) {
-  const user = {
-    id: "123",
-    name: "Mauriani",
-    email: "maurianim@gmail.com",
-  };
+  const [user, setUser] = useState<User>({} as User);
+
+  async function signInWithGoogle() {
+    try {
+      const RESPONSE_TYPE = "token";
+      const SCOPE = encodeURI("profile email"); // para que o espaço seja formatado na uri
+
+      const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`;
+
+      const { type, params } = (await AuthSession.startAsync({
+        authUrl,
+      })) as AuthorizationResponse;
+
+      if (type === "success") {
+        const response = await fetch(
+          `https://www.googleapis.com/oauth2/v1/userinfo?alt=json&access_token=${params.access_token}`
+        );
+        const userinfo = await response.json();
+
+        const userLogged = {
+          id: userinfo.id,
+          email: userinfo.email,
+          name: userinfo.given_name,
+          photo: userinfo.picture,
+        };
+
+        setUser(userLogged);
+        await AsyncStorage.setItem(
+          "@gofinances:user",
+          JSON.stringify(userLogged)
+        );
+      }
+    } catch (err) {
+      throw new Error(err as string);
+    }
+  }
+
+  async function signInWithApple() {
+    try {
+      const credential = await AppleAuthentication.signInAsync({
+        requestedScopes: [
+          AppleAuthentication.AppleAuthenticationScope.FULL_NAME,
+          AppleAuthentication.AppleAuthenticationScope.EMAIL,
+        ],
+      });
+
+      if (credential) {
+        const userLogged = {
+          id: String(credential.user),
+          email: credential.email!,
+          name: credential.fullName?.givenName,
+          photo: undefined,
+        };
+
+        setUser(userLogged as User);
+        await AsyncStorage.setItem(
+          "@gofinances:user",
+          JSON.stringify(userLogged)
+        );
+      }
+    } catch (error) {
+      throw new Error(error as string);
+    }
+  }
+
   return (
-    <AuthContext.Provider value={{ user, signInWithGoogle }}>
+    <AuthContext.Provider value={{ user, signInWithGoogle, signInWithApple }}>
       {children}
     </AuthContext.Provider>
   );
