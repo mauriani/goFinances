@@ -23,6 +23,7 @@ import {
   Fields,
   TransactionsTypes,
 } from "./styles";
+import { useAuth } from "../../hooks/auth";
 
 interface FormData {
   name: string;
@@ -45,6 +46,8 @@ export function Register() {
     key: "category",
     name: "categoria",
   });
+
+  const { user } = useAuth();
 
   const navigation = useNavigation();
   const {
@@ -70,7 +73,7 @@ export function Register() {
   }
 
   async function handleRegister(form: FormData) {
-    const dataKey = "@gofinances:transactions";
+    const dataKey = `@gofinances:transactions_user:${user.id}`;
 
     if (!transactionType) return Alert.alert("Selecione o tipo da transação");
 
@@ -101,7 +104,7 @@ export function Register() {
         name: "categoria",
       });
 
-      navigation.navigate("Listagem");
+      // navigation.navigate("Listagem");
     } catch (error) {
       console.log(error);
 
