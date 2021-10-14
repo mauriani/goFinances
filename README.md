@@ -1,10 +1,10 @@
 # goFinances
 
 <div align="center">
-  <img src="https://user-images.githubusercontent.com/32397288/137336285-addc99ae-e969-480a-aa3b-c2c256e213d2.jpeg" width="150"> | 
-  <img src="https://user-images.githubusercontent.com/32397288/137336300-a7cbc82f-0d34-446f-b1f9-f66b0d01ca55.jpeg" width="150"> | 
-  <img src="https://user-images.githubusercontent.com/32397288/137336336-ced87a79-28ab-4357-9989-81866de5c06d.jpeg" width="150"> |
-  <img src="https://user-images.githubusercontent.com/32397288/137336359-ff0c9725-33c8-4d19-b245-40dce1caab5c.jpeg" width="150">
+  <img src="https://user-images.githubusercontent.com/32397288/137336285-addc99ae-e969-480a-aa3b-c2c256e213d2.jpeg" width="170"> | 
+  <img src="https://user-images.githubusercontent.com/32397288/137336300-a7cbc82f-0d34-446f-b1f9-f66b0d01ca55.jpeg" width="170"> | 
+  <img src="https://user-images.githubusercontent.com/32397288/137336336-ced87a79-28ab-4357-9989-81866de5c06d.jpeg" width="170"> |
+  <img src="https://user-images.githubusercontent.com/32397288/137336359-ff0c9725-33c8-4d19-b245-40dce1caab5c.jpeg" width="170">
 </div>
 
 
