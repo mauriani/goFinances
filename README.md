@@ -1,7 +1,10 @@
 # goFinances
 
-<img src="https://user-images.githubusercontent.com/32397288/82909062-2aeaac00-9f3f-11ea-80de-07a651e49ed6.jpeg" width="150"> | <img src="https://user-images.githubusercontent.com/32397288/82909243-62595880-9f3f-11ea-934c-daaf24a0676d.jpeg" width="150"> | <img src="(https://user-images.githubusercontent.com/32397288/137335946-bfcf96e8-1fd2-402d-8666-ae0395abc676.jpeg" width="150"> |
-<img src="https://user-images.githubusercontent.com/32397288/83290146-8d041500-a1bc-11ea-9703-bba25ceb2d98.jpeg" width="150">
+<img src="https://user-images.githubusercontent.com/32397288/137336285-addc99ae-e969-480a-aa3b-c2c256e213d2.jpeg" width="150"> | 
+<img src="https://user-images.githubusercontent.com/32397288/137336300-a7cbc82f-0d34-446f-b1f9-f66b0d01ca55.jpeg" width="150"> | 
+<img src="https://user-images.githubusercontent.com/32397288/137336336-ced87a79-28ab-4357-9989-81866de5c06d.jpeg" width="150"> |
+<img src="https://user-images.githubusercontent.com/32397288/137336359-ff0c9725-33c8-4d19-b245-40dce1caab5c.jpeg" width="150">
+
 
 ## 🚀 Sobre o projeto
 
