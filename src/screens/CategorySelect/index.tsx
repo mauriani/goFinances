@@ -33,6 +33,7 @@ export function CategorySelect({
   function handleCategorySelect(category: Category) {
     setCategory(category);
   }
+
   return (
     <Container>
       <Header>

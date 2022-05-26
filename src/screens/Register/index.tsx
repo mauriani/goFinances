@@ -49,7 +49,6 @@ export function Register() {
 
   const { user } = useAuth();
 
-  const navigation = useNavigation();
   const {
     control,
     handleSubmit,

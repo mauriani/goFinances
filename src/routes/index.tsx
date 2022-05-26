@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Fragment } from "react";
+import { StatusBar } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 
 import { useAuth } from "../hooks/auth";
@@ -10,8 +11,10 @@ export function Routes() {
   const { user } = useAuth();
 
   return (
-    <NavigationContainer>
-      {user.id ? <AppRoutes /> : <AuthRoutes />}
-    </NavigationContainer>
+    <Fragment>
+      <NavigationContainer>
+        {user.id ? <AppRoutes /> : <AuthRoutes />}
+      </NavigationContainer>
+    </Fragment>
   );
 }

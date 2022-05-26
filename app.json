@@ -6,10 +6,13 @@
     "slug": "gofinances",
     "scheme": "gofinances",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "description": "",
-    "githubUrl": "https://github.com/mauriani/goFinances"
+    "githubUrl": "https://github.com/mauriani/goFinances",
+    "splash": {
+      "image": "./assets/splash.png",
+      "backgroundColor": "#ffffff",
+      "resizeMode": "cover"
+    }
   }
 }
