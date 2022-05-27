@@ -6,13 +6,23 @@
     "slug": "gofinances",
     "scheme": "gofinances",
     "version": "1.0.0",
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "description": "",
     "githubUrl": "https://github.com/mauriani/goFinances",
     "splash": {
       "image": "./assets/splash.png",
       "backgroundColor": "#ffffff",
       "resizeMode": "cover"
+    },
+    "androidStatusBar": {
+      "backgroundColor": "#5636D3",
+      "translucent": true,
+      "barStyle": "light-content"
+    },
+    "android": {
+      "package": "com.maurianimaciel.gofinances"
     }
   }
 }
