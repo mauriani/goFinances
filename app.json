@@ -1,28 +1,23 @@
 {
-  "name": "gofinances",
-  "displayName": "gofinances",
   "expo": {
     "name": "gofinances",
     "slug": "gofinances",
-    "scheme": "gofinances",
     "version": "1.0.0",
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "description": "",
     "githubUrl": "https://github.com/mauriani/goFinances",
+    "jsEngine": "hermes",
     "splash": {
-      "image": "./assets/splash.png",
-      "backgroundColor": "#ffffff",
-      "resizeMode": "cover"
-    },
-    "androidStatusBar": {
-      "backgroundColor": "#5636D3",
-      "translucent": true,
-      "barStyle": "light-content"
+      "image": "./assets/adaptive-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#FFFFFF"
     },
     "android": {
-      "package": "com.maurianimaciel.gofinances"
+      "package": "com.maurianimaciel.gofinances",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
+      }
     }
   }
 }

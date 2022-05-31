@@ -19,7 +19,7 @@ export const TitleWrapper = styled.View`
 export const Title = styled.Text`
   font-family: ${({ theme }) => theme.fonts.medium};
   color: ${({ theme }) => theme.colors.shape};
-  font-size: ${RFValue(30)}px;
+  font-size: ${RFValue(29)}px;
 
   text-align: center;
   margin-top: 45px;
@@ -27,7 +27,7 @@ export const Title = styled.Text`
 export const SignInTitle = styled.Text`
   font-family: ${({ theme }) => theme.fonts.regular};
   color: ${({ theme }) => theme.colors.shape};
-  font-size: ${RFValue(16)}px;
+  font-size: ${RFValue(15)}px;
 
   text-align: center;
   margin-top: 80px;

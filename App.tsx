@@ -2,9 +2,9 @@ import "react-native-gesture-handler";
 import "intl";
 import "intl/locale-data/jsonp/pt-BR";
 
-import React from "react";
+import React, { useEffect } from "react";
 import { StatusBar } from "react-native";
-import AppLoading from "expo-app-loading";
+import * as SplashScreen from "expo-splash-screen";
 import { ThemeProvider } from "styled-components";
 import { Routes } from "./src/routes";
 
@@ -29,9 +29,19 @@ export default function App() {
 
   const { userStorageLoading } = useAuth();
 
-  if (!fontsLoaded || userStorageLoading) {
-    return <AppLoading />;
+  async function load() {
+    if (!fontsLoaded || userStorageLoading) {
+      await SplashScreen.preventAutoHideAsync();
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+    } else {
+      await SplashScreen.hideAsync();
+    }
   }
+
+  useEffect(() => {
+    load();
+  }, [fontsLoaded, userStorageLoading]);
+
   return (
     <ThemeProvider theme={theme}>
       <StatusBar
