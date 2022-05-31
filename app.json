@@ -3,20 +3,23 @@
     "name": "gofinances",
     "slug": "gofinances",
     "version": "1.0.0",
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "description": "",
+    "icon": "./assets/icon.png",
     "githubUrl": "https://github.com/mauriani/goFinances",
-    "jsEngine": "hermes",
+    "jsEngine": "jsc",
     "splash": {
-      "image": "./assets/adaptive-icon.png",
+      "image": "./assets/splashscreen_image.png",
       "resizeMode": "contain",
-      "backgroundColor": "#FFFFFF"
+      "backgroundColor": "#5636d3"
     },
     "android": {
       "package": "com.maurianimaciel.gofinances",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "foregroundImage": "./assets/splashscreen_image.png",
+        "backgroundColor": "#5636d3"
       }
     }
   }
