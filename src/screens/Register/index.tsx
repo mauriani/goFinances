@@ -6,7 +6,6 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import uuid from "react-native-uuid";
 
 import { useForm } from "react-hook-form";
-import { useNavigation } from "@react-navigation/native";
 
 import { Button } from "../../components/Form/Button";
 import { InputForm } from "../../components/Form/InputForm";

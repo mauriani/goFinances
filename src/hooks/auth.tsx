@@ -7,8 +7,9 @@ import React, {
 } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const { CLIENT_ID } = process.env;
-const { REDIRECT_URI } = process.env;
+const CLIENT_ID =
+  "1002460393313-nchc299cf0sqi00sukcbiqmo0co6i758.apps.googleusercontent.com";
+const REDIRECT_URI = "https://auth.expo.io/@maurianimaciel/gofinances";
 
 import * as AuthSession from "expo-auth-session";
 import * as AppleAuthentication from "expo-apple-authentication";
@@ -59,6 +60,8 @@ function AuthProvider({ children }: AuthProviderProps) {
 
       const authUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}&scope=${SCOPE}`;
 
+      //console.log(authUrl);
+
       const { type, params } = (await AuthSession.startAsync({
         authUrl,
       })) as AuthorizationResponse;
@@ -80,7 +83,8 @@ function AuthProvider({ children }: AuthProviderProps) {
         await AsyncStorage.setItem(userStorageKey, JSON.stringify(userLogged));
       }
     } catch (err) {
-      throw new Error(err as string);
+      console.log(err);
+      // throw new Error(err as string);
     }
   }
 
@@ -114,6 +118,7 @@ function AuthProvider({ children }: AuthProviderProps) {
 
   async function signOut() {
     setUser({} as User);
+    console.log("signOut");
     await AsyncStorage.removeItem(userStorageKey);
   }
 

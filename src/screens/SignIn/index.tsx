@@ -71,7 +71,6 @@ export function SignIn() {
 
       <Footer>
         <FooterWrapper>
-          
           <SignInSocialButton
             title="Entrar com Google"
             svg={GoogleSvg}
